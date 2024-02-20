@@ -1,0 +1,30 @@
+name: frontend devops
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  deploy:
+    name: frontend test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: get code from github
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.REMOTE_PORT }}
+        script: |
+          sudo rm -rf frontend
+          sudo git clone https://github.com/beomiya/frontend
+          sudo cd frontend
+          sudo npm i
+          sudo npm run build
+          sudo docker build --tag beomiya/frontend:latest .
+          sudo docker login -u gusqja0213@naver.com -p dydehf0213@
+          sudo docker push beomiya/frontend:latest
+          docker-compose -f docker-compose.yml pull
+          docker-compose -f docker-compose.yml up --force-recreate
