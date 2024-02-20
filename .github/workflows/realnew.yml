@@ -19,7 +19,7 @@ jobs:
         port: ${{ secrets.REMOTE_PORT }}
         script: |
           sudo rm -rf frontend
-          sudo git clone https://github.com/beomiya/frontend
+          sudo git clone https://github.com/ParkHyeonBeom/frontend
           cd frontend
           sudo npm i
           export VUE_APP_BACKEND_URL=15.164.166.94
