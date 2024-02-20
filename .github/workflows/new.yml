@@ -23,8 +23,8 @@ jobs:
           sudo cd frontend
           sudo npm i
           sudo npm run build
-          sudo docker build --tag beomiya/frontend:latest .
+          sudo docker build --tag beomiya/test:latest .
           sudo docker login -u gusqja0213@naver.com -p dydehf0213@
-          sudo docker push beomiya/frontend:latest
+          sudo docker push beomiya/test:latest
           docker-compose -f docker-compose.yml pull
           docker-compose -f docker-compose.yml up --force-recreate
