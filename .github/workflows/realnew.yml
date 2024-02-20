@@ -27,5 +27,5 @@ jobs:
           sudo docker build --tag beomiya/test:latest .
           sudo docker login -u gusqja0213@naver.com -p dydehf0213@
           sudo docker push beomiya/test:latest
-          sudo docker-compose -f /home/ubuntu/docker-compose2.yml pull
-          sudo docker-compose -f /home/ubuntu/docker-compose2.yml up -d --force-recreate --build
+          sudo docker-compose -f /home/ubuntu/docker-compose.yml pull
+          sudo docker-compose -f /home/ubuntu/docker-compose.yml up -d --force-recreate --build
